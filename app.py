@@ -65,9 +65,11 @@ async def solve(req: Req):
             pass
     return {"output": fallback(data)}
 
+BASE = os.path.dirname(os.path.abspath(__file__))
+
 @app.get("/")
 async def index():
-    return FileResponse("index.html")
+    return FileResponse(os.path.join(BASE, "index.html"))
 
 if __name__ == "__main__":
     import uvicorn
